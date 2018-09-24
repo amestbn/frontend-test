@@ -1,0 +1,6 @@
+export const ItemActionTypes = {
+  ADD_ITEM: 'ADD_ITEM',
+  REMOVE_ITEM: 'REMOVE_ITEM',
+  INCREMENT: 'INCREMENT',
+  DECREMENT: 'DECREMENT'
+};
