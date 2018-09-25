@@ -27,9 +27,9 @@ class ListItem extends Component {
     this.props.decrement(this.props.id)
   }
   render() {
-    const { counter, title } = this.props;
+    const { count, title } = this.props;
     return(
-      <li><button type="button" onClick={this.handleRemove}>x</button>{ title }<button type="button" onClick={this.handleIncrement}>^</button>{ counter }<button type="button" onClick={this.handleDecrement}>v</button></li>
+      <li><button type="button" onClick={this.handleRemove}>x</button>{ title }<button type="button" onClick={this.handleIncrement}>^</button>{ count }<button type="button" onClick={this.handleDecrement}>v</button></li>
     );
   }
 }

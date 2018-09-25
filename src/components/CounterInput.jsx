@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import uuid from 'uuid';
 import { ItemActions } from '../actions';
 
 const mapDispatchToProps = dispatch => {
@@ -27,8 +26,7 @@ class CounterInput extends Component {
     event.preventDefault();
     const { title } = this.state;
 
-    const id = uuid();
-    this.props.addItem({ title, id, counter: 0 });
+    this.props.addItem({ title });
     this.setState({ title: '' });
   }
   render () {

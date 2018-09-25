@@ -37,7 +37,7 @@ app.get('/api/v1/counters', function(req, res) {
 // =>   {id: 'zxcv', title: 'steve', count: 3},
 // =>   {id: 'qwer', title: 'bob',   count: 0}
 // => ]
-app.post('/api/v1/counter', function(req, res) {
+app.post('/api/v1/counters', function(req, res) {
   res.json(Counters.create(req.body.title));
 })
 
@@ -46,8 +46,10 @@ app.post('/api/v1/counter', function(req, res) {
 // =>   {id: 'zxcv', title: 'steve', count: 3},
 // =>   {id: 'qwer', title: 'bob',   count: 0}
 // => ]
-app.delete('/api/v1/counter', function(req, res) {
-  res.json(Counters.delete(req.body.id));
+app.delete('/api/v1/counters/:id', function(req, res) {
+  const id = req.param('id')
+  Counters.delete(id)
+  res.json();
 });
 
 // [json] POST {id: 'qwer'} /api/v1/counter/inc
@@ -55,8 +57,9 @@ app.delete('/api/v1/counter', function(req, res) {
 // =>   {id: 'zxcv', title: 'steve', count: 3},
 // =>   {id: 'qwer', title: 'bob',   count: 1}
 // => ]
-app.post('/api/v1/counter/inc', function(req, res) {
-  res.json(Counters.inc(req.body.id));
+app.post('/api/v1/counters/:id/inc', function(req, res) {
+  const id = req.param('id')
+  res.json(Counters.inc(id));
 });
 
 // [json] POST {id: 'zxcv'} /api/v1/counter/dec
@@ -64,8 +67,9 @@ app.post('/api/v1/counter/inc', function(req, res) {
 // =>   {id: 'zxcv', title: 'steve', count: 2},
 // =>   {id: 'qwer', title: 'bob',   count: 1}
 // => ]
-app.post('/api/v1/counter/dec', function(req, res) {
-  res.json(Counters.dec(req.body.id));
+app.post('/api/v1/counters/:id/dec', function(req, res) {
+  const id = req.param('id')
+  res.json(Counters.dec(id));
 });
 
 app.get('*', sendFile('index.html'));
