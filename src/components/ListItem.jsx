@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Control, Field, Icon, PanelBlock } from 'bloomer';
+
 import { ItemActions } from '../actions';
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -18,18 +21,52 @@ class ListItem extends Component {
     this.handleDecrement = this.handleDecrement.bind(this);
   }
   handleRemove() {
-    this.props.removeItem(this.props.id)
+    this.props.removeItem(this.props.id);
   }
   handleIncrement() {
-    this.props.increment(this.props.id)
+    this.props.increment(this.props.id);
   }
   handleDecrement() {
-    this.props.decrement(this.props.id)
+    if(this.props.count > 0 ) {
+      this.props.decrement(this.props.id);
+    }
   }
   render() {
     const { count, title } = this.props;
     return(
-      <li><button type="button" onClick={this.handleRemove}>x</button>{ title }<button type="button" onClick={this.handleIncrement}>^</button>{ count }<button type="button" onClick={this.handleDecrement}>v</button></li>
+      <PanelBlock>
+          <div className="level list-item">
+            <div className="title-container">
+              <div className="remove-button-container">
+                <Button isSize="small" isColor="danger" type="button" className="is-round" onClick={this.handleRemove}>
+                  <Icon className="fa fa-times" />
+                </Button>
+              </div>
+              <div className="title">
+                { title }
+              </div>
+            </div>
+            <div className="iterator-control-container">
+              <div className="level-item">
+                <Field hasAddons={true} className="iterator-control">
+                  <Control className="down">
+                    <Button onClick={this.handleDecrement} isColor="dark">
+                      <Icon className="fas fa-angle-down" />
+                    </Button>
+                  </Control>
+                  <Control className="count">
+                    <span>{ count }</span>
+                  </Control>
+                  <Control className="up">
+                    <Button onClick={this.handleIncrement} isColor="dark">
+                      <Icon className="fas fa-angle-up" />
+                    </Button>
+                  </Control>
+                </Field>
+              </div>
+            </div>
+          </div>
+      </PanelBlock>
     );
   }
 }

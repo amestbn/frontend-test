@@ -7,9 +7,7 @@ import ListItem from './ListItem';
 
 const mapStateToProps = state => {
   return {
-    items: state.items,
-    loading: state.loading,
-    error: state.error
+    items: state.items
   };
 };
 
@@ -28,15 +26,13 @@ class List extends Component {
     if(loading) {
       return <li>Loading...</li>
     } else {
-      return items.map((el, index) => {
-        return <ListItem key={index} {...el}></ListItem>
+      return items.map(el => {
+        return <ListItem key={el.id} {...el}></ListItem>
       });
     }
   }
   render() {
-    return(
-      <ul>{ this.renderList() }</ul>
-    );
+    return this.renderList();
   }
 }
 
