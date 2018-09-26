@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="container main">
         <h1 className="title has-text-centered has-text-primary">Tally</h1>
-        <Panel className="counter-container">
+        <Panel tag="div" className="counter-container">
           <PanelBlock>
             <CounterInput />
           </PanelBlock>
