@@ -32,7 +32,6 @@ class CounterInput extends Component {
   }
   render () {
     const { title } = this.state;
-
     return (
       <form onSubmit={this.handleSubmit} className="counter-form">
         <Field hasAddons={true}>

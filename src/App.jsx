@@ -15,7 +15,7 @@ class App extends Component {
             <CounterInput />
           </PanelBlock>
           <List />
-          <PanelBlock>
+          <PanelBlock className="panel-footer">
             <Footer />
           </PanelBlock>
         </Panel>
