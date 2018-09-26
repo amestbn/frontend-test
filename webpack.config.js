@@ -12,7 +12,8 @@ module.exports = {
       chunkFilename: '[id].css'
     }),
     new HtmlWebpackPlugin({
-      template: APP_DIR + '/index.html'
+      template: APP_DIR + '/index.html',
+      inject: false
     })
   ],
   entry: {
