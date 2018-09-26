@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const BUILD_DIR = path.resolve(__dirname, 'public');
 const APP_DIR = path.resolve(__dirname, 'src');
@@ -9,6 +10,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
+    }),
+    new HtmlWebpackPlugin({
+      template: APP_DIR + '/index.html'
     })
   ],
   entry: {
@@ -39,6 +43,11 @@ module.exports = {
         'css-loader',
         'sass-loader'
       ]
+    }, {
+      test: /\.html$/,
+      use: {
+        loader: 'html-loader'
+      }
     }]
   }
 }
